@@ -254,7 +254,10 @@ export const prompts = {
   rename: (cat) => ({ text: `✏️ نام تازه‌ی «${categoryLabel(cat)}» را بفرست.`, reply_markup: cancelMarkup }),
   emoji: (cat) => ({ text: `😀 یک ایموجی برای «${categoryLabel(cat)}» بفرست، یا - برای حذف ایموجی.`, reply_markup: cancelMarkup }),
   edit: (note) => ({
-    text: `✏️ متن فعلی «${note.title}» را در پیام بالا فرستادم. کپی کن، تغییر بده و متن کامل تازه را بفرست.\n(برای متن خیلی بلند، فایل .txt یا .md هم قبول است.)`,
+    text: (note.body
+      ? `✏️ متن فعلی «${note.title}» را در پیام بالا فرستادم. کپی کن، تغییر بده و متن کامل تازه را بفرست.`
+      : `✏️ «${note.title}» هنوز متنی ندارد. متنی را که می‌خواهی بفرست.`) +
+      '\n(برای متن خیلی بلند، فایل .txt یا .md هم قبول است.)',
     reply_markup: cancelMarkup,
   }),
 };
